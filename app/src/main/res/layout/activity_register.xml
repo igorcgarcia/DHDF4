@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_screen"
+    tools:context=".view.activity.RegisterActivity">
+
+        <LinearLayout
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/custom_panel_bgcolor"
+            android:orientation="vertical"
+            >
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="54dp"
+                android:layout_marginStart="19dp"
+                android:layout_marginEnd="19dp"
+                android:hint="Name"
+                app:boxBackgroundColor="@color/white"
+                app:hintTextColor="@color/green"
+                app:boxStrokeColor="@color/gray_light"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edRegisterName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/green"
+                    android:inputType="textEmailAddress"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="19dp"
+                android:layout_marginEnd="19dp"
+                android:hint="Email"
+                app:boxBackgroundColor="@color/white"
+                app:hintTextColor="@color/green"
+                app:boxStrokeColor="@color/gray_light"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edRegisterEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/green"
+                    android:inputType="textEmailAddress"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="19dp"
+                android:layout_marginEnd="19dp"
+                app:boxBackgroundColor="@color/white"
+                app:hintTextColor="@color/green"
+                app:boxStrokeColor="@color/gray_light"
+                android:hint="Password"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edRegisterPwd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/green"
+                    android:inputType="textPassword"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="19dp"
+                android:layout_marginEnd="19dp"
+                app:boxBackgroundColor="@color/white"
+                app:hintTextColor="@color/green"
+                app:boxStrokeColor="@color/gray_light"
+                android:hint="Repeat password"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edRegisterRePwd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/green"
+                    android:inputType="textPassword"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btRegisterSave"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/custom_button_enabled"
+                android:text="CREATE ACCOUNT"
+                android:textColor="@color/white"
+                android:layout_marginTop="70dp"
+                android:layout_marginStart="13dp"
+                android:layout_marginEnd="13dp"
+                android:layout_marginBottom="21dp"
+                />
+
+        </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
