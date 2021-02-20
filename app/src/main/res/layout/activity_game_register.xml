@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_screen"
+    tools:context=".view.activity.GameRegisterActivity">
+
+
+        <LinearLayout
+            android:id="@+id/llPanelWhite"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/custom_panel_bgcolor"
+            android:orientation="vertical"
+            >
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="91dp"
+                android:layout_marginStart="19dp"
+                android:layout_marginEnd="19dp"
+                android:hint="Name"
+                app:boxBackgroundColor="@color/white"
+                app:hintTextColor="@color/green"
+                app:boxStrokeColor="@color/gray_light"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edGameRegisterName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/green"
+                    android:inputType="textEmailAddress"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="13dp"
+                android:layout_marginStart="19dp"
+                android:layout_marginEnd="19dp"
+                android:hint="Created at"
+                app:boxBackgroundColor="@color/white"
+                app:hintTextColor="@color/green"
+                app:boxStrokeColor="@color/gray_light"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edGameRegisterCreateAt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/green"
+                    android:inputType="textEmailAddress"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="13dp"
+                android:layout_marginStart="19dp"
+                android:layout_marginEnd="19dp"
+                android:hint="Description"
+                app:boxBackgroundColor="@color/white"
+                app:hintTextColor="@color/green"
+                app:boxStrokeColor="@color/gray_light"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edRegisterPwd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/green"
+                    android:inputType="textMultiLine"
+                    android:lines="3"
+                    android:gravity="top"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btRegisterSave"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/custom_button_enabled"
+                android:text="SAVE GAME"
+                android:textColor="@color/white"
+                android:layout_marginTop="74dp"
+                android:layout_marginStart="13dp"
+                android:layout_marginEnd="13dp"
+                android:layout_marginBottom="16dp"
+                />
+
+        </LinearLayout>
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="@drawable/custom_circle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/llPanelWhite"
+        app:layout_constraintBottom_toTopOf="@id/llPanelWhite"
+
+        />
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/llPanelWhite"
+        app:layout_constraintBottom_toTopOf="@id/llPanelWhite"
+        android:background="@drawable/ic_baseline_photo_camera_24"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

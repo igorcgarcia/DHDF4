@@ -13,6 +13,10 @@ class LoginActivity : AppCompatActivity() {
         findViewById(R.id.btCreateAccount)
     }
 
+    private val btLogin : AppCompatButton by lazy {
+        findViewById(R.id.btLogin)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -25,5 +29,8 @@ class LoginActivity : AppCompatActivity() {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
 
+        btLogin.setOnClickListener{
+            startActivity(Intent(this, GameHomeActivity::class.java))
+        }
     }
 }

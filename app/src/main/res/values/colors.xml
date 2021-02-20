@@ -11,5 +11,7 @@
     <color name="gray_light">#C0CCDA</color>
     <color name="redv">#EA2427</color>
     <color name="green_dark">#00796B</color>
-
+    <color name="blue_dark">#1F2D3D</color>
+    <color name="gray_mid">#8492A6</color>
+    <color name="gray_bg">#DDDDDD</color>
 </resources>
