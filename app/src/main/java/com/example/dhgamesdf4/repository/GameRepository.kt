@@ -23,9 +23,10 @@ class GameRepository {
                 for (document in documents) {
 
                     val gameName: String = document.getString("gameName").toString()
+                    val gameDescription: String = document.getString("gameDescription").toString()
                     val gameCreateAt: String = document.getString("gameCreateAt").toString()
                     val gameImage: String = document.getString("gameImage").toString()
-                    list.add(GameList(gameName, gameCreateAt, gameImage))
+                    list.add(GameList(gameName, gameDescription, gameCreateAt, gameImage))
 
                 }
 

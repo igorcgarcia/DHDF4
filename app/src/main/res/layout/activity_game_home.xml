@@ -16,6 +16,7 @@
         android:layout_marginBottom="20dp"
         android:layout_marginRight="12dp"
         app:srcCompat="@drawable/ic_baseline_add_24"
+        android:backgroundTint="@color/redv"
         app:tint="@color/white"
         tools:ignore="VectorDrawableCompat" />
 

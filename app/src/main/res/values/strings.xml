@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">DHGamesDF4</string>
+    <string name="campo_obrigatorio">%1$s is Required</string>
+    <string name="email_invalido">Invalid Email Format</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="repeat_password">Repeat password</string>
 </resources>

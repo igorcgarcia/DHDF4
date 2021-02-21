@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.dhgamesdf4.R
 import com.example.dhgamesdf4.view.adapter.GamesAdapter
 import com.example.dhgamesdf4.viewModel.GameViewModel
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
@@ -26,6 +27,10 @@ class GameHomeActivity : AppCompatActivity() {
 
     private val searchView: androidx.appcompat.widget.SearchView by lazy {
         findViewById(R.id.searchView)
+    }
+
+    private val fabHomeAdicionar : FloatingActionButton by lazy {
+        findViewById(R.id.fabHomeAdicionar)
     }
 
 
@@ -93,9 +98,14 @@ class GameHomeActivity : AppCompatActivity() {
                 }
                 return false
             }
-
-
         })
+
+        // botão adicionar
+        fabHomeAdicionar.setOnClickListener {
+            val intent = Intent(this, GameRegisterActivity::class.java)
+            intent.putExtra("jogoid", 1)
+            startActivity(intent)
+        }
     }
 
     override fun onNewIntent(intent: Intent) {
@@ -113,9 +123,5 @@ class GameHomeActivity : AppCompatActivity() {
         super.onDestroy()
         Firebase.auth.signOut()
     }
-
-}
-
-private fun SearchView.setOnQueryTextListener(onQueryTextListener: SearchView.OnQueryTextListener) {
 
 }

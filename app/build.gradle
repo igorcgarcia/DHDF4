@@ -44,24 +44,23 @@ dependencies {
     implementation "androidx.appcompat:appcompat:${versions.appCompat}"
     implementation "com.google.android.material:material:${versions.material}"
     implementation "androidx.constraintlayout:constraintlayout:${versions.constraintLayout}"
-
     implementation "androidx.fragment:fragment-ktx:${versions.fragment}"
 
     // ViewModel
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:${versions.lifecycle_version}"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.lifecycle_version}"
-//    kapt "androidx.lifecycle:lifecycle-compiler:${versions.lifecycle_version}"
+
     // LiveData
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.0'
-    // glide
-    implementation "com.github.bumptech.glide:glide:${versions.glide}"
-    kapt "com.github.bumptech.glide:compiler:${versions.glideKapt}"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:${versions.lifecycle_version}"
 
     //coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.coroutines}"
+    /* coroutines support for firebase operations */
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:${versions.coroutines_play_svcs}"
 
-    // circle image
-    implementation "de.hdodenhof:circleimageview:${versions.circle_image_view}"
+    // glide
+    implementation "com.github.bumptech.glide:glide:${versions.glide}"
+    kapt "com.github.bumptech.glide:compiler:${versions.glideKapt}"
 
     // Import the Firebase BoM
     implementation platform('com.google.firebase:firebase-bom:26.5.0')
@@ -82,11 +81,8 @@ dependencies {
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation 'com.google.firebase:firebase-firestore-ktx'
 
-    /* coroutines support for firebase operations */
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:${versions.coroutines_play_svcs}"
-
-    // loading on glide
-    implementation "androidx.swiperefreshlayout:swiperefreshlayout:${versions.swiperefreshlayout}"
+    // circle image
+    implementation "de.hdodenhof:circleimageview:${versions.circle_image_view}"
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

@@ -7,7 +7,6 @@
     android:background="@drawable/background_screen"
     tools:context=".view.activity.GameRegisterActivity">
 
-
         <LinearLayout
             android:id="@+id/llPanelWhite"
             android:layout_gravity="center"
@@ -106,24 +105,33 @@
 
         </LinearLayout>
 
-    <ImageView
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAvatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/llPanelWhite"
+        app:layout_constraintBottom_toTopOf="@id/llPanelWhite"
+        app:fabCustomSize="150dp"
+        app:srcCompat="@drawable/ic_baseline_photo_camera_24"
+        android:backgroundTint="@color/redv"
+        app:tint="@color/white"
+        tools:ignore="VectorDrawableCompat"/>
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/ivAvatar"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:background="@drawable/custom_circle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/llPanelWhite"
         app:layout_constraintBottom_toTopOf="@id/llPanelWhite"
+        android:visibility="visible"
+        android:scaleType="centerCrop"
+        android:translationZ="10dp"
+        tools:targetApi="lollipop" />
 
-        />
-
-    <ImageView
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/llPanelWhite"
-        app:layout_constraintBottom_toTopOf="@id/llPanelWhite"
-        android:background="@drawable/ic_baseline_photo_camera_24"
-        />
 </androidx.constraintlayout.widget.ConstraintLayout>

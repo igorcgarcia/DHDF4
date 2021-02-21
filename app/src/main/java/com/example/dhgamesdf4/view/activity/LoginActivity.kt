@@ -1,13 +1,19 @@
 package com.example.dhgamesdf4.view.activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
+import androidx.lifecycle.ViewModelProvider
 import com.example.dhgamesdf4.R
+import com.example.dhgamesdf4.util.validateRequiredField
+import com.example.dhgamesdf4.viewModel.UserViewModel
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 
 class LoginActivity : AppCompatActivity() {
+
+    private lateinit var userViewModel: UserViewModel
 
     private val btCreateAccount : AppCompatButton by lazy {
         findViewById(R.id.btCreateAccount)
@@ -17,11 +23,35 @@ class LoginActivity : AppCompatActivity() {
         findViewById(R.id.btLogin)
     }
 
+    private val  tllogin_email : TextInputLayout by lazy {
+        findViewById(R.id.tllogin_email)
+    }
+
+    private val tlPwd : TextInputLayout by lazy {
+        findViewById(R.id.tlPwd)
+    }
+
+    private val edlogin_email : TextInputEditText by lazy {
+        findViewById(R.id.edlogin_email)
+    }
+
+    private val edPwd : TextInputEditText by lazy {
+        findViewById(R.id.edPwd)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
+
         setupObservables()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // verifica se tem usuario logado
+        userViewModel.validateUser()
     }
 
     fun setupObservables(){
@@ -30,7 +60,21 @@ class LoginActivity : AppCompatActivity() {
         }
 
         btLogin.setOnClickListener{
-            startActivity(Intent(this, GameHomeActivity::class.java))
+            val checkValidates = tllogin_email.validateRequiredField(R.string.email)
+                .and(tlPwd.validateRequiredField(R.string.password))
+
+            if(checkValidates) {
+                val email = edlogin_email.text.toString()
+                val password = edPwd.text.toString()
+                userViewModel.loginEmailSenha(email, password)
+            }
+        }
+
+        userViewModel.userLogin.observe(this) { user ->
+            user?.let {
+                startActivity(Intent(this, GameHomeActivity::class.java))
+                finish()
+            }
         }
     }
 }

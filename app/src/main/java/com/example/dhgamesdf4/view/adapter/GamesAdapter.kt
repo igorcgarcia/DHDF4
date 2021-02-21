@@ -18,10 +18,10 @@ class GamesAdapter(private val gameList : List<GameList>,
                    private val onItemClicked : (Int) -> Unit
 ) : RecyclerView.Adapter<GamesAdapter.ViewHolder>(), Filterable {
 
-    var jogosFiltrado = ArrayList<GameList>()
+    var listGames = ArrayList<GameList>()
 
     init {
-        jogosFiltrado = ArrayList(gameList)
+        listGames = ArrayList(gameList)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -31,11 +31,11 @@ class GamesAdapter(private val gameList : List<GameList>,
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(jogosFiltrado[position],onItemClicked)
+        holder.bind(listGames[position],onItemClicked)
     }
 
     override fun getItemCount(): Int {
-        return jogosFiltrado.size
+        return listGames.size
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
@@ -61,7 +61,7 @@ class GamesAdapter(private val gameList : List<GameList>,
             override fun performFiltering(constraint: CharSequence?): FilterResults {
                 val filtro = constraint?.toString()?.toLowerCase(Locale.ROOT)
                 if(filtro.isNullOrEmpty()) {
-                    jogosFiltrado = ArrayList(gameList)
+                    listGames = ArrayList(gameList)
                 } else {
                     val resultList = ArrayList<GameList>()
                     for(jogo in gameList) {
@@ -69,16 +69,16 @@ class GamesAdapter(private val gameList : List<GameList>,
                             resultList.add(jogo)
                         }
                     }
-                    jogosFiltrado = resultList
+                    listGames = resultList
                 }
                 val filterResults = FilterResults()
-                filterResults.values = jogosFiltrado
+                filterResults.values = listGames
                 return filterResults
             }
 
             @Suppress("UNCHECKED_CAST")
             override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-                jogosFiltrado = results?.values as ArrayList<GameList>
+                listGames = results?.values as ArrayList<GameList>
                 notifyDataSetChanged()
             }
         }
