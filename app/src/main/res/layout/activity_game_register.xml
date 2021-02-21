@@ -23,6 +23,7 @@
             >
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tlGameRegisterName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="91dp"
@@ -43,7 +44,9 @@
                     />
 
             </com.google.android.material.textfield.TextInputLayout>
+
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tlGameRegisterCreateAt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="13dp"
@@ -66,6 +69,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tlRegisterDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="13dp"
@@ -78,7 +82,7 @@
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edRegisterPwd"
+                    android:id="@+id/edRegisterDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/green"
@@ -125,6 +129,8 @@
         android:id="@+id/ivAvatar"
         android:layout_width="150dp"
         android:layout_height="150dp"
+        app:civ_border_width="5dp"
+        app:civ_border_color="@color/redv"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/llPanelWhite"
@@ -133,5 +139,20 @@
         android:scaleType="centerCrop"
         android:translationZ="10dp"
         tools:targetApi="lollipop" />
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/pbRegisterProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:indeterminate="true"
+        app:indicatorSize="250dp"
+        android:visibility="visible"
+        app:indicatorColor="@color/redv"
+        />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

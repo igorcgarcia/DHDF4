@@ -15,7 +15,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class GamesAdapter(private val gameList : List<GameList>,
-                   private val onItemClicked : (Int) -> Unit
+                   private val onItemMenuClicked : (String) -> Unit
 ) : RecyclerView.Adapter<GamesAdapter.ViewHolder>(), Filterable {
 
     var listGames = ArrayList<GameList>()
@@ -31,7 +31,7 @@ class GamesAdapter(private val gameList : List<GameList>,
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(listGames[position],onItemClicked)
+        holder.bind(listGames[position],onItemMenuClicked)
     }
 
     override fun getItemCount(): Int {
@@ -44,7 +44,7 @@ class GamesAdapter(private val gameList : List<GameList>,
         private lateinit var tvGameName : TextView
         private lateinit var tvGameCreateAt : TextView
 
-        fun bind(list : GameList, onItemMenuClicked: (Int) -> Unit) = with(itemView) {
+        fun bind(list : GameList, onItemMenuClicked: (String) -> Unit) = with(itemView) {
             tvGameName = findViewById<TextView>(R.id.tvGameName)
             tvGameCreateAt = findViewById<TextView>(R.id.tvGameCreateAt)
             ivGamePhoto = findViewById<ImageView>(R.id.ivGamePhoto)
@@ -52,6 +52,10 @@ class GamesAdapter(private val gameList : List<GameList>,
             Glide.with(itemView.context).load(list.gameImage).into(ivGamePhoto)
             tvGameName.text = list.gameName
             tvGameCreateAt.text = list.gameCreateAt
+
+            ivGamePhoto.setOnClickListener {
+                onItemMenuClicked(list.gameName ?: "")
+            }
 
         }
     }
@@ -64,9 +68,9 @@ class GamesAdapter(private val gameList : List<GameList>,
                     listGames = ArrayList(gameList)
                 } else {
                     val resultList = ArrayList<GameList>()
-                    for(jogo in gameList) {
-                        if (jogo.gameName.toLowerCase(Locale.ROOT)?.contains(filtro) == true) {
-                            resultList.add(jogo)
+                    for(game in gameList) {
+                        if (game.gameName?.toLowerCase(Locale.ROOT)?.contains(filtro) == true) {
+                            resultList.add(game)
                         }
                     }
                     listGames = resultList

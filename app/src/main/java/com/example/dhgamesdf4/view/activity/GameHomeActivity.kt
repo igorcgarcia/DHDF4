@@ -4,7 +4,6 @@ import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView.OnQueryTextListener
@@ -12,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dhgamesdf4.R
+import com.example.dhgamesdf4.util.Constants.Permissions.KEY_INTENT_GAME
 import com.example.dhgamesdf4.view.adapter.GamesAdapter
 import com.example.dhgamesdf4.viewModel.GameViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -33,7 +33,6 @@ class GameHomeActivity : AppCompatActivity() {
         findViewById(R.id.fabHomeAdicionar)
     }
 
-
     private lateinit var gameViewModel: GameViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,7 +41,7 @@ class GameHomeActivity : AppCompatActivity() {
 
         if (Intent.ACTION_SEARCH == intent.action) {
             intent.getStringExtra(SearchManager.QUERY)?.also { query ->
-                Log.i("Pesquisa", query)
+//                Log.i("Pesquisa", query)
                 searchView.setQuery(query, true)
             }
         }
@@ -51,6 +50,11 @@ class GameHomeActivity : AppCompatActivity() {
 
         iniComponents()
         setupObervables()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        iniComponents()
     }
 
     private fun iniComponents() {
@@ -64,6 +68,9 @@ class GameHomeActivity : AppCompatActivity() {
                     GridLayoutManager.VERTICAL, false
                 )
                 adapter = GamesAdapter(list) { position ->
+                    val intent = Intent(this@GameHomeActivity, GameDetailActivity::class.java)
+                    intent.putExtra(KEY_INTENT_GAME, position)
+                    startActivity(intent)
                 }
             }
         }
@@ -72,11 +79,11 @@ class GameHomeActivity : AppCompatActivity() {
     private fun setupObervables(){
         // configuração da busca
         val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
-//        searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
-//        searchView.setIconifiedByDefault(false)
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
+        searchView.setIconifiedByDefault(false)
 
         searchView.setOnCloseListener {
-            Log.i("Pesquisa", "pesquisa foi limpada")
+//            Log.i("Pesquisa", "pesquisa foi limpada")
             true
         }
 
@@ -103,7 +110,6 @@ class GameHomeActivity : AppCompatActivity() {
         // botão adicionar
         fabHomeAdicionar.setOnClickListener {
             val intent = Intent(this, GameRegisterActivity::class.java)
-            intent.putExtra("jogoid", 1)
             startActivity(intent)
         }
     }
@@ -112,7 +118,7 @@ class GameHomeActivity : AppCompatActivity() {
         super.onNewIntent(intent)
         if (Intent.ACTION_SEARCH == intent.action) {
             val query = intent.getStringExtra(SearchManager.QUERY)
-            Log.i("Pesquisa", query ?: "sem texto")
+//            Log.i("Pesquisa", query ?: "sem texto")
             query?.let {
                 searchView.setQuery(query, true)
             }

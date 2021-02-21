@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.dhgamesdf4"
-    xmlns:dist="http://schemas.android.com/apk/distribution">
+    xmlns:dist="http://schemas.android.com/apk/distribution"
+    package="com.example.dhgamesdf4">
 
     <dist:module dist:instant="true" />
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -16,6 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DHGamesDF4">
+        <activity android:name=".view.activity.GameDetailActivity"></activity>
         <activity android:name=".view.activity.GameHomeActivity" />
         <activity android:name=".view.activity.RecyclerGamesActivity" />
         <activity android:name=".view.activity.GameRegisterActivity" />
