@@ -87,11 +87,10 @@ class GameRegisterActivity : AppCompatActivity() {
     private fun setupView() {
         gameRef?.let { game ->
             edGameRegisterName.setText(game.gameName)
-            // nome do jogo é o id no Firestore, não deixa editar
             tlGameRegisterName.isEnabled = false
             edRegisterDescription.setText(game.gameDescription)
             edGameRegisterCreateAt.setText(game.gameCreateAt)
-            ivAvatar.tag = "EDITANDO"
+//            ivAvatar.tag = "EDITANDO"
 
             Glide.with(this@GameRegisterActivity)
                     .load(game.gameImage)
@@ -137,7 +136,7 @@ class GameRegisterActivity : AppCompatActivity() {
                 val gameCreateAt = edGameRegisterCreateAt.text.toString()
                 val gameDescription = edRegisterDescription.text.toString()
                 var gameImage: Uri? = null
-                if(! ivAvatar.tag.equals("EDITANDO"))
+//                if(! ivAvatar.tag.equals("EDITANDO"))
                     gameImage = ivAvatar.tag as Uri
                 gameViewModel.saveGame(gameName, gameCreateAt, gameDescription, gameImage)
             }

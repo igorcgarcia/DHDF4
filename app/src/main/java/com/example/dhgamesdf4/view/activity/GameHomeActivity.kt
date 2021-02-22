@@ -58,7 +58,6 @@ class GameHomeActivity : AppCompatActivity() {
     }
 
     private fun iniComponents() {
-
         gameViewModel.getAllGames()
 
         gameViewModel.games.observe(this) { list ->
@@ -74,9 +73,11 @@ class GameHomeActivity : AppCompatActivity() {
                 }
             }
         }
+
     }
 
     private fun setupObervables(){
+
         // configuração da busca
         val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
         searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
@@ -112,6 +113,7 @@ class GameHomeActivity : AppCompatActivity() {
             val intent = Intent(this, GameRegisterActivity::class.java)
             startActivity(intent)
         }
+
     }
 
     override fun onNewIntent(intent: Intent) {
