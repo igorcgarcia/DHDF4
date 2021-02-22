@@ -2,11 +2,9 @@ package com.example.dhgamesdf4.view.adapter
 
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
 import android.view.ViewGroup
-import android.widget.Filter
-import android.widget.Filterable
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.dhgamesdf4.R
@@ -14,8 +12,11 @@ import com.example.dhgamesdf4.model.GameList
 import java.util.*
 import kotlin.collections.ArrayList
 
-class GamesAdapter(private val gameList : List<GameList>,
-                   private val onItemMenuClicked : (String) -> Unit
+
+class GamesAdapter(
+        private val gameList: List<GameList>,
+        private val progressbar: ProgressBar,
+        private val onItemMenuClicked: (String) -> Unit,
 ) : RecyclerView.Adapter<GamesAdapter.ViewHolder>(), Filterable {
 
     var listGames = ArrayList<GameList>()
@@ -24,14 +25,16 @@ class GamesAdapter(private val gameList : List<GameList>,
         listGames = ArrayList(gameList)
     }
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.activity_recycler_games,parent,false)
+                .inflate(R.layout.activity_recycler_games, parent, false)
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(listGames[position],onItemMenuClicked)
+        holder.bind(listGames[position], progressbar, onItemMenuClicked)
+
     }
 
     override fun getItemCount(): Int {
@@ -44,7 +47,7 @@ class GamesAdapter(private val gameList : List<GameList>,
         private lateinit var tvGameName : TextView
         private lateinit var tvGameCreateAt : TextView
 
-        fun bind(list : GameList, onItemMenuClicked: (String) -> Unit) = with(itemView) {
+        fun bind(list: GameList, progressbar: ProgressBar, onItemMenuClicked: (String) -> Unit) = with(itemView) {
             tvGameName = findViewById<TextView>(R.id.tvGameName)
             tvGameCreateAt = findViewById<TextView>(R.id.tvGameCreateAt)
             ivGamePhoto = findViewById<ImageView>(R.id.ivGamePhoto)
@@ -56,6 +59,8 @@ class GamesAdapter(private val gameList : List<GameList>,
             ivGamePhoto.setOnClickListener {
                 onItemMenuClicked(list.gameName ?: "")
             }
+
+            progressbar.visibility = GONE
 
         }
     }

@@ -4,9 +4,11 @@ import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.widget.ProgressBar
 import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.SearchView.OnQueryTextListener
+import androidx.appcompat.widget.SearchView.*
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -31,6 +33,10 @@ class GameHomeActivity : AppCompatActivity() {
 
     private val fabHomeAdicionar : FloatingActionButton by lazy {
         findViewById(R.id.fabHomeAdicionar)
+    }
+
+    private val progressbar : ProgressBar by lazy {
+        findViewById(R.id.progressbar)
     }
 
     private lateinit var gameViewModel: GameViewModel
@@ -58,6 +64,7 @@ class GameHomeActivity : AppCompatActivity() {
     }
 
     private fun iniComponents() {
+        progressbar.visibility= VISIBLE
         gameViewModel.getAllGames()
 
         gameViewModel.games.observe(this) { list ->
@@ -66,14 +73,13 @@ class GameHomeActivity : AppCompatActivity() {
                     this@GameHomeActivity, 2,
                     GridLayoutManager.VERTICAL, false
                 )
-                adapter = GamesAdapter(list) { position ->
+                adapter = GamesAdapter(list,progressbar) { position ->
                     val intent = Intent(this@GameHomeActivity, GameDetailActivity::class.java)
                     intent.putExtra(KEY_INTENT_GAME, position)
                     startActivity(intent)
                 }
             }
         }
-
     }
 
     private fun setupObervables(){
